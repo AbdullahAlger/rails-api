@@ -19,6 +19,7 @@ gem 'capybara'
 gem 'factory_girl_rails', '~> 4.0'
 gem 'faker'
 gem 'devise'
+gem 'active_model_serializers', '0.9.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
