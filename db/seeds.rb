@@ -14,4 +14,26 @@
   )
 end
 
-puts "#{User.count} have been created!"
+users = User.all
+
+4.times do
+  List.create!(
+     name: Faker::Lorem.sentence,
+     description: Faker::Lorem.sentence,
+     user: users.sample
+  )
+end
+
+lists = List.all
+
+10.times do
+  Item.create!(
+     body: Faker::Lorem.sentence,
+     user: users.sample,
+     list: lists.sample
+  )
+end
+
+puts "#{User.count} users have been created!"
+puts "#{List.count} lists have been created!"
+puts "#{Item.count} items have been created!"
