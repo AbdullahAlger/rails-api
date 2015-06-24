@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-
-  root to: "welcome#index"
+  namespace :api, defaults: {format: :json} do
+    resources :users
+  end
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

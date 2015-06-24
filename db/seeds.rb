@@ -8,7 +8,7 @@
 
 3.times do
   User.create!(
-     name: Faker::Name.name,
+     username: Faker::Internet.user_name,
      email: Faker::Internet.email,
      password: Faker::Internet.password
   )
@@ -19,7 +19,6 @@ users = User.all
 4.times do
   List.create!(
      name: Faker::Lorem.sentence,
-     description: Faker::Lorem.sentence,
      user: users.sample
   )
 end
