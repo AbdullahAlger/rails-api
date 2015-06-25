@@ -28,7 +28,6 @@ lists = List.all
 10.times do
   Item.create!(
      description: Faker::Lorem.sentence,
-     user: users.sample,
      list: lists.sample
   )
 end
