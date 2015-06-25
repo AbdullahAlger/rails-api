@@ -1,8 +1,8 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :body, :user_id, :list_id
+  attributes :id, :description, :user_id, :list_id
 
-  def body
-    object.body
+  def description
+    object.description
   end
 
   def user_id

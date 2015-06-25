@@ -9,7 +9,6 @@
 3.times do
   User.create!(
      username: Faker::Internet.user_name,
-     email: Faker::Internet.email,
      password: Faker::Internet.password
   )
 end
@@ -19,6 +18,7 @@ users = User.all
 4.times do
   List.create!(
      name: Faker::Lorem.sentence,
+     permissions: "public",
      user: users.sample
   )
 end
@@ -27,11 +27,13 @@ lists = List.all
 
 10.times do
   Item.create!(
-     body: Faker::Lorem.sentence,
+     description: Faker::Lorem.sentence,
      user: users.sample,
      list: lists.sample
   )
 end
+
+User.create!(username: "alger", password: "hello")
 
 puts "#{User.count} users have been created!"
 puts "#{List.count} lists have been created!"
