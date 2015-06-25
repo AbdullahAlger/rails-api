@@ -1,10 +1,6 @@
 class Api::ListsController < ApiController
 
-  include ActiveModel::Validations
-
   before_action :authenticated?
-
-  validates :name, presence: true
 
   def create
     list = List.new(list_params)
@@ -13,6 +9,15 @@ class Api::ListsController < ApiController
       render json: list
     else
       render json: {errors: list.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    list = List.find(params[:id])
+    if list.update(list_params)
+      render json: list
+    else
+      render json: { errors: list.errors.full_messages}, status: :unprocessable_entity
     end
   end
 

@@ -18,7 +18,7 @@ users = User.all
 4.times do
   List.create!(
      name: Faker::Lorem.sentence,
-     permissions: "public",
+     permissions: "open",
      user: users.sample
   )
 end
@@ -28,6 +28,7 @@ lists = List.all
 10.times do
   Item.create!(
      description: Faker::Lorem.sentence,
+     complete: false,
      list: lists.sample
   )
 end
