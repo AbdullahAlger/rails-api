@@ -1,5 +1,3 @@
-#Angular-Rails Task List
+#Rails API for a Todo List
 
-This is another version of my Angular Task List that was built with Gulp and Firebase. This time, the applicaion will use Rails.
-
-More to come ...
+This is an API for a Todo List written using Ruby and Rails. This will connect to an Angular Todo application that I previously built using Firebase. 
