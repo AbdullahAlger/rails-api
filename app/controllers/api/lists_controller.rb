@@ -2,6 +2,11 @@ class Api::ListsController < ApiController
 
   before_action :authenticated?
 
+  def show
+    list = List.find(params[:id])
+    render json: list
+  end
+
   def create
     list = List.new(list_params)
 
