@@ -19,21 +19,23 @@ class Api::ItemsController < ApiController
   end
 
   def update
-    item = Item.find(params[:id])
-    list = item.list
-    if item.update(item_params) && list.user == current_user
+    item = current_user.items.find(params[:id])
+    if item.update(item_params)
       render json: item
     else
       render json: { errors: item.errors.full_messages}, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotFound
+    render json: {}, status: :not_found
   end
 
   def destroy
-    item = Item.find(params[:id])
-    list = item.list
-    if item.destroy && list.user == current_user
+    item = current_user.items.find(params[:id])
+    if item.destroy
       render json: {}, status: :not_found
     end
+  rescue ActiveRecord::RecordNotFound
+    render json: {}, status: :not_found
   end
 
   private
