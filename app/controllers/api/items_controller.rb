@@ -17,7 +17,8 @@ class Api::ItemsController < ApiController
   end
 
   def create
-    item = Item.new(item_params)
+    list = current_user.lists.find(params[:list_id])
+    item = list.items.new(item_params)
 
     if item.save
       render json: item
