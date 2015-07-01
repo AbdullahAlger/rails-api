@@ -4,6 +4,6 @@ class List < ActiveRecord::Base
   has_many :items, dependent: :destroy
 
   validates :name, presence: true
-  validates_inclusion_of :permissions, in: %w(private viewable open), message: "%{value} not valid"
+  validates_inclusion_of :permissions, in: %w(private open), message: "%{value} not valid"
 
 end
