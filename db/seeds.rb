@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-3.times do
+2.times do
   User.create!(
      username: Faker::Internet.user_name,
      password: Faker::Internet.password
@@ -14,8 +14,9 @@
 end
 
 users = User.all
+User.create!(username: "alger", password: "hello")
 
-4.times do
+10.times do
   List.create!(
      name: Faker::Lorem.sentence,
      permissions: "open",
@@ -25,7 +26,7 @@ end
 
 lists = List.all
 
-10.times do
+20.times do
   Item.create!(
      description: Faker::Lorem.sentence,
      complete: false,
@@ -33,7 +34,6 @@ lists = List.all
   )
 end
 
-User.create!(username: "alger", password: "hello")
 
 puts "#{User.count} users have been created!"
 puts "#{List.count} lists have been created!"

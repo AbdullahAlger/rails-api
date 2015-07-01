@@ -9,10 +9,9 @@ Rails.application.routes.draw do
     end
 
     resources :lists, only: [] do
-      resources :items, only: [:create, :update, :show, :index]
+      resources :items, only: [:create, :update, :destroy, :index]
     end
 
-    resources :items, only: [:destroy]
   end
 
   # You can have the root of your site routed with "root"

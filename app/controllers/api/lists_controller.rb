@@ -2,9 +2,15 @@ class Api::ListsController < ApiController
 
   before_action :authenticated?
 
+  def index
+    render json: current_user.lists
+  end
+
   def show
-    list = List.find(params[:id])
+    list = current_user.lists.find(params[:id])
     render json: list
+  rescue ActiveRecord::RecordNotFound
+    render json: {}, status: :not_found
   end
 
   def create
@@ -18,23 +24,28 @@ class Api::ListsController < ApiController
   end
 
   def update
-    list = List.find(params[:id])
+    list = current_user.lists.find(params[:id])
     if list.update(list_params)
       render json: list
     else
       render json: { errors: list.errors.full_messages}, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotFound
+    render json: {}, status: :not_found
   end
 
   def destroy
     begin
-      list = List.find(params[:id])
-      list.destroy
-      render json: {}, status: :no_content
+      list = current_user.lists.find(params[:id])
+      if list.destroy
+        render json: {}, status: :no_content
+      end
     rescue ActiveRecord::RecordNotFound
       render json: {}, status: :not_found
     end
   end
+
+  private
 
   def list_params
     params.require(:list).permit(:name, :permissions)
