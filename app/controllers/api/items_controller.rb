@@ -12,6 +12,8 @@ class Api::ItemsController < ApiController
     list = current_user.lists.find(params[:list_id])
     item = list.items.find(params[:id])
     render json: item
+  rescue ActiveRecord::RecordNotFound
+    render json: {}, status: :not_found
   end
 
   def create
@@ -25,7 +27,8 @@ class Api::ItemsController < ApiController
   end
 
   def update
-    item = current_user.items.find(params[:id])
+    list = current_user.lists.find(params[:list_id])
+    item = list.items.find(params[:id])
     if item.update(item_params)
       render json: item
     else
@@ -36,7 +39,8 @@ class Api::ItemsController < ApiController
   end
 
   def destroy
-    item = current_user.items.find(params[:id])
+    list = current_user.lists.find(params[:list_id])
+    item = list.items.find(params[:id])
     if item.destroy
       render json: {}, status: :not_found
     end
