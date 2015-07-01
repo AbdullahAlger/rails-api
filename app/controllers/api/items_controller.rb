@@ -2,6 +2,12 @@ class Api::ItemsController < ApiController
 
   before_action :authenticated?
 
+  def index
+    lists = current_user.lists.find(params[:list_id])
+    items = lists.items
+    render json: items
+  end
+
   def show
     list = current_user.lists.find(params[:list_id])
     item = list.items.find(params[:id])
