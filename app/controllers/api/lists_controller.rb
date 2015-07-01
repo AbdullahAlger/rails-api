@@ -3,7 +3,8 @@ class Api::ListsController < ApiController
   before_action :authenticated?
 
   def index
-    render json: current_user.lists
+    lists = current_user.lists
+    render json: lists
   end
 
   def show
