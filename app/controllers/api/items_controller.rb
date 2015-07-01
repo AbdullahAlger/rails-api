@@ -4,7 +4,7 @@ class Api::ItemsController < ApiController
 
   def index
     list = List.find(params[:list_id])
-    items = list.items.all
+    items = list.items
     render json: items
   end
 
