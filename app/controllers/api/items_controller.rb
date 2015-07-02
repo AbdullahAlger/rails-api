@@ -8,14 +8,6 @@ class Api::ItemsController < ApiController
     render json: items
   end
 
-  # def show
-  #   list = current_user.lists.find(params[:list_id])
-  #   item = list.items.find(params[:id])
-  #   render json: item
-  # rescue ActiveRecord::RecordNotFound
-  #   render json: {}, status: :not_found
-  # end
-
   def create
     list = current_user.lists.find(params[:list_id])
     item = list.items.build(item_params)
