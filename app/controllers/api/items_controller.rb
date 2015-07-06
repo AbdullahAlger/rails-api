@@ -35,7 +35,7 @@ class Api::ItemsController < ApiController
     list = current_user.lists.find(params[:list_id])
     item = list.items.find(params[:id])
     if item.destroy
-      render json: {}, status: :not_found
+      render json: {}, status: :no_content
     end
   rescue ActiveRecord::RecordNotFound
     render json: {}, status: :not_found
