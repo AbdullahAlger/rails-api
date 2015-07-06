@@ -5,7 +5,7 @@ class ApiController < ApplicationController
 
   private
 
-  def authenticate?
+  def authenticated?
     authenticate_or_request_with_http_basic do |username, password|
       user = User.find_by_username(username)
       @current_user = user && user.authenticate(password)
