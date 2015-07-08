@@ -2,7 +2,7 @@
 
 This is an API for a Todo List written using Ruby and Rails. This will connect to an Angular Todo application that I previously built using Firebase. 
 
-This API is currently on Heroku (https://v1api.herokuapp.com/api/)[https://v1api.herokuapp.com/api/]. To run the application, simply go to `users/1`, which will allow you to access the application. When you get a prompt for a username and password, type `alger` and `hello`, respectively. 
+This API is currently on Heroku [https://v1api.herokuapp.com/api/](https://v1api.herokuapp.com/api/). To run the application, simply go to `users/1`, which will allow you to access the application. When you get a prompt for a username and password, type `alger` and `hello`, respectively. 
 
 The best way to access the API is through cURL. 
 
