@@ -4,11 +4,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   namespace :api, defaults: {format: :json} do
-    resources :users do
-      resources :lists
-    end
 
-    resources :lists, only: [] do
+    resources :lists, only: [:create, :index, :update, :destroy, :show] do
       resources :items, only: [:create, :index, :update, :destroy]
     end
 
